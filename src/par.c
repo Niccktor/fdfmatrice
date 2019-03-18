@@ -6,12 +6,12 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 16:54:57 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/01 17:42:11 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/18 14:35:35 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
+/*
 static void	ft_para(t_mlx *mlx_all, int i, int j)
 {
 	int x;
@@ -63,4 +63,4 @@ void		ft_parallel(t_mlx *mlx_all)
 		}
 		i++;
 	}
-}
+}*/

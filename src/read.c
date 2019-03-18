@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:34:52 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/01 16:34:12 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/18 16:49:42 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,11 @@ void	ft_print_tab(t_mlx *mlx_all)
 		j = 0;
 		while (j < mlx_all->map->len)
 		{
-			ft_putnbr(mlx_all->map->map[i][j]);
-			ft_putstr(" ");
-			j++;
-		}
-		ft_putstr("\n");
-		i++;
-	}
-}
-
-void	ft_print_color(t_mlx *mlx_all)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < mlx_all->map->height)
-	{
-		j = 0;
-		while (j < mlx_all->map->len)
-		{
-			ft_putnbr(mlx_all->map->color[i][j]);
+			ft_putnbr(mlx_all->map->map[i][j]->y);
+			ft_putstr(",");
+			ft_putnbr(mlx_all->map->map[i][j]->x);
+			ft_putstr(",");
+			ft_putnbr(mlx_all->map->map[i][j]->z);
 			ft_putstr(" ");
 			j++;
 		}
@@ -61,12 +45,9 @@ int		ft_parse_map(char *file, t_mlx *mlx_all)
 
 	if ((mlx_all->map->height = ft_get_height(file)) == 0)
 			return (-1);
-	mlx_all->map->map = (int **)ft_memalloc(sizeof(int *) *
+	mlx_all->map->map = (t_point ***)ft_memalloc(sizeof(t_point **) *
 			(mlx_all->map->height + 1));
-	mlx_all->map->color = (unsigned int **)ft_memalloc(sizeof(int *) *
-			(mlx_all->map->height + 1));
-	if ((fd = open(file, O_RDONLY)) < 0 || mlx_all->map->color == NULL
-			|| mlx_all->map->map == NULL)
+	if ((fd = open(file, O_RDONLY)) < 0 || mlx_all->map->map == NULL)
 		return (-1);
 	i = 0;
 	while (get_next_line(fd, &line) > 0)
@@ -79,17 +60,15 @@ int		ft_parse_map(char *file, t_mlx *mlx_all)
 	}
 	ft_print_tab(mlx_all);
 	ft_putstr("\n");
-	ft_print_color(mlx_all);
-	//ft_draw_map(mlx_all);
 	return (0);
 }
 
 int		ft_get_map(t_mlx *mlx_all, char **line, int k)
 {
 	int		i;
-	int		j;
+//	int		j;
 	int		len;
-	char	*rgb;
+//	char	*rgb;
 
 	len = 0;
 	while (line[len] != '\0')
@@ -98,16 +77,14 @@ int		ft_get_map(t_mlx *mlx_all, char **line, int k)
 		return (-1);
 	if (mlx_all->map->len == -1)
 		mlx_all->map->len = len;
-	mlx_all->map->map[k] = (int *)ft_memalloc(sizeof(int) * (len + 1));
-	mlx_all->map->map[k][len + 1] = '\0';
-	mlx_all->map->color[k] =
-		(unsigned int *)ft_memalloc(sizeof(unsigned int) * (len + 1));
-	mlx_all->map->color[k][len + 1] = '\0';
+	mlx_all->map->map[k] =
+		(t_point **)ft_memalloc(sizeof(t_point *) * (len + 1));
+	mlx_all->map->map[k][len + 1] = NULL;
 	i = 0;
 	while (line[i] != '\0')
 	{
-		mlx_all->map->map[k][i] = ft_atoi(line[i]);
-		j = 0;
+		mlx_all->map->map[k][i] = ft_newpoint(i, k, line[i]);
+	/*	j = 0;
 		while (line[i][j] != ',' && line[i][j] != '\0')
 			j++;
 		if (line[i][j] == ',')
@@ -117,7 +94,7 @@ int		ft_get_map(t_mlx *mlx_all, char **line, int k)
 			ft_memdel((void **)&rgb);
 		}
 		else
-			mlx_all->map->color[k][i] = ft_atoi_base("FF0000", 16);
+			mlx_all->map->color[k][i] = ft_atoi_base("FF0000", 16);*/
 		ft_memdel((void **)&(line[i]));
 		i++;
 	}

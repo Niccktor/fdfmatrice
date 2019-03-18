@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 19:30:51 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/18 12:35:54 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/18 14:25:01 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,29 @@ int		ft_ishexa(char c)
 			|| ((c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F')))
 		return (1);
 	return (0);
+}
+
+t_point		*ft_newpoint(int x, int y, char *line)
+{
+	t_point		*new;
+	int			j;
+	char		*rgb;
+
+	if ((new = (t_point *)ft_memalloc(sizeof(t_point))) == NULL)
+		return (NULL);
+	new->x = x;
+	new->y = y;
+	new->z = ft_atoi(line);
+	j = 0;
+	while (line[j] != ',' && line[j] != '\0')
+		j++;
+	if (line[j] == ',')
+	{
+		rgb = ft_strsub(line, j+3, 8);
+		new->color = ft_atoi_base(rgb, 16);
+		ft_memdel((void **)&rgb);
+	}
+	else
+		new->color = ft_atoi_base("FF0000", 16);
+	return (new);
 }

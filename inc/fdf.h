@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:09:03 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/01 17:09:42 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/18 14:36:04 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,17 @@
 # include "../libft/libft.h"
 # include <mlx.h>
 
+typedef struct		s_point
+{
+	int 			x;
+	int				y;
+	int				z;
+	int				color;
+}					t_point;
+
 typedef struct		s_map
 {
-	int				**map;
-	unsigned int	**color;
+	t_point			***map;
 	int				height;
 	int				len;
 }					t_map;
@@ -84,6 +91,7 @@ t_mlx	*ft_new_mlx();
 t_mlx	*ft_new_win(t_mlx *mlx_all, char *s, int width, int height);
 t_mlx	*ft_new_cam(t_mlx *mlx_all);
 int		ft_ishexa(char c);
+t_point	*ft_newpoint(int x, int y, char *line);
 /*
  *					draw.c
  */
@@ -110,11 +118,11 @@ void			ft_iso(t_mlx *mlx_all);
 /*
  *					retation.c
  */
-void			ft_x_rotation(t_mlx *mlx_all);
+//void			ft_x_rotation(t_mlx *mlx_all);
 /*
  * 					par.c
  */
-void			ft_parallel(t_mlx *mlx_all);
+//void			ft_parallel(t_mlx *mlx_all);
 
 void			ft_print_tab(t_mlx *mlx_all);
 

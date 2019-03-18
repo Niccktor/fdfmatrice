@@ -6,13 +6,13 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 23:18:24 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/02/27 00:14:53 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/18 14:34:52 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 #include <math.h>
-
+/*
 void	ft_x_rotation(t_mlx *mlx_all)
 {
 	int	**new_map;
@@ -63,4 +63,4 @@ void	ft_x_rotation(t_mlx *mlx_all)
 	mlx_all->map->map = new_map;
 	ft_print_tab(mlx_all);
 	//mlx_all->map->len = mlx_all->map->len;
-}
+}*/
