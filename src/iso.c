@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 21:54:51 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/18 16:51:49 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/20 15:14:31 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void		ft_iso_right(t_mlx *mlx_all, int i, int j)
 			+ (mlx_all->map->map[i][j]->x * mlx_all->cam->di_x
 			+ mlx_all->map->map[i][j]->y * mlx_all->cam->di_y)
 			* sin(mlx_all->cam->angle) + y_add;
-		ft_draw_ligne(mlx_all, x, y, 0xFF0000);
+		ft_draw_ligne(mlx_all, x, y, mlx_all->map->map[i][j - 1]->color);
 	}
 }
 
@@ -72,7 +72,7 @@ static void		ft_iso_down(t_mlx *mlx_all, int i, int j)
 		+ (mlx_all->map->map[i][j]->x * mlx_all->cam->di_x
 		+ mlx_all->map->map[i][j]->y * mlx_all->cam->di_y)
 		* sin(mlx_all->cam->angle) + y_add;
-	ft_draw_ligne(mlx_all, x, y, 0xFF0000);
+	ft_draw_ligne(mlx_all, x, y, mlx_all->map->map[i - 1][j]->color);
 }
 
 void			ft_iso(t_mlx *mlx_all)
