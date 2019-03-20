@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:09:03 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/20 16:13:22 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/20 17:21:28 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,8 @@ void			ft_z_rotation(t_mlx *mlx_all, double theta);
  */
 //void			ft_parallel(t_mlx *mlx_all);
 
+
+double			ft_sin(double x);
 void			ft_print_tab(t_mlx *mlx_all);
 
 #endif
