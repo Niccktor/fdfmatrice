@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 16:51:56 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/20 17:36:22 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/20 17:49:00 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,52 @@ double		ft_sin(double x)
 	else if (x > pi / 2)
 		x = pi - x;
 	return (ft_taylor_sin(x) * sign);
+}
+
+static double ft_taylor_cos(double x)
+{
+	int step;
+	double fact;
+	double square_x;
+	double ret;
+	
+	square_x = x * x;
+	x = 1;
+	step = 1;
+	fact = 1;
+	ret = 1;
+	while (step < 10)
+	{
+		fact = (fact + fact) * step * (step + step - 1);
+		x = -x * square_x;
+		ret = ret + x / fact;
+		step++;
+	}
+	return (ret);
+}
+
+double		ft_cos(double x)
+{
+	int sign;
+	double pi;
+
+	pi = 3.14159265359;
+	sign = 1;
+	if (x < 0)
+		x = -x;
+	if (x == 0)
+		return (1);
+	else if (x == pi / 2)
+		return (0);
+	else if (x > pi / 2)
+	{
+		x = pi - x;
+		sign = -1;
+	}
+	return (ft_taylor_cos(x) * sign);
+}
+
+double		ft_tan(double x)
+{
+	return (ft_sin(x) / ft_cos(x));
 }
