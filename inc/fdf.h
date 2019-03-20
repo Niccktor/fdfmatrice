@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:09:03 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/18 14:36:04 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/20 16:13:22 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 typedef struct		s_point
 {
-	int 			x;
-	int				y;
-	int				z;
+	double 			x;
+	double			y;
+	double			z;
 	int				color;
 }					t_point;
 
@@ -118,7 +118,9 @@ void			ft_iso(t_mlx *mlx_all);
 /*
  *					retation.c
  */
-//void			ft_x_rotation(t_mlx *mlx_all);
+void			ft_x_rotation(t_mlx *mlx_all, double theta);
+void			ft_y_rotation(t_mlx *mlx_all, double theta);
+void			ft_z_rotation(t_mlx *mlx_all, double theta);
 /*
  * 					par.c
  */

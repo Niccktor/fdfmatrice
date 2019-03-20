@@ -6,61 +6,97 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 23:18:24 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/18 14:34:52 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/20 16:30:09 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 #include <math.h>
-/*
-void	ft_x_rotation(t_mlx *mlx_all)
-{
-	int	**new_map;
-	int i;
-	int j;
-	int new_i;
-	int new_j;
 
-	ft_putstr("test\n");
-	new_map =  (int **)ft_memalloc(sizeof(int *) * 100);
-	ft_putstr("test\n");
-	i = 0;
-	while (100 > i)
+/*	
+ 					rot x
+
+	x = (x * 1)				+ (y * 0)			+ (z * 0);
+	y = (x * 0)				+ (y * cos()) 		+ (z * sin());
+	z = (x * 0)				+ (y * (sin() * -1) + (z * cos());
+
+					rot y
+	x = (x * cos())			+ (y * 0)			+ (z * (sin() * -1));
+	y = (x * 0)				+ (y * 1)			+ (z * 0);
+	z = (x * sin())			+ (y * 0)			+ (z * cos())
+
+					rot z
+	x = (x * cos())			+ (y * sin())		+ (z * 0);
+	y = (x * (sin() * -1))	+ (y * cos())		+ (z * 0);
+	z = (x * 0)				+ (y * 0)			+ (z * 1);
+
+
+*/
+void	ft_x_rotation(t_mlx *mlx_all, double theta)
+{
+	int		i;
+	int		j;
+	double	tmp_y;
+	double	tmp_z;
+
+	i = -1;
+	while (mlx_all->map->height > ++i)
 	{
-		new_map[i] = (int *)ft_memalloc(sizeof(int) * 101);
-		j = 0;
-		while (100 > j)
+		j = -1;
+		while (mlx_all->map->len > ++j)
 		{
-			new_map[i][j] = 0;
-			j++;
+			tmp_y = mlx_all->map->map[i][j]->y;
+			tmp_z = mlx_all->map->map[i][j]->z;
+			mlx_all->map->map[i][j]->y = tmp_y * cos(theta)
+				+ tmp_z * sin(theta);
+			mlx_all->map->map[i][j]->z = tmp_y * (sin(theta) * -1)
+				+ tmp_z * cos(theta);
 		}
-		i++;
 	}
-	ft_putstr("test\n");
-	i = 0;
-	while (mlx_all->map->height > i)
+}
+
+void	ft_y_rotation(t_mlx *mlx_all, double theta)
+{
+	int		i;
+	int		j;
+	double	tmp_x;
+	double	tmp_z;
+
+	i = -1;
+	while (mlx_all->map->height > ++i)
 	{
-		j = 0;
-		while (mlx_all->map->len > j)
+		j = -1;
+		while (mlx_all->map->len > ++j)
 		{
-			new_i = ft_abs(i * cos(1.5708) - j * sin(1.5708));
-			new_j = ft_abs(i * sin(1.5708) + j * cos(1.5708));
-			ft_putstr("\n----------------\ni = ");
-			ft_putnbr(i);
-			ft_putstr(" new_i = ");
-			ft_putnbr(new_i);
-			ft_putstr("\nj = ");
-			ft_putnbr(j);
-			ft_putstr(" new_j = ");
-			ft_putnbr(new_j);
-			ft_putstr("\n---------------");
-			new_map[new_i][new_j] = mlx_all->map->map[i][j];
-			j++;
+			tmp_x = mlx_all->map->map[i][j]->x;
+			tmp_z = mlx_all->map->map[i][j]->z;
+			mlx_all->map->map[i][j]->x = tmp_x * cos(theta)
+				+ tmp_z * (sin(theta) * -1);
+			mlx_all->map->map[i][j]->z = tmp_x * sin(theta)
+				+ tmp_z * cos(theta);
 		}
-		i++;
 	}
-	ft_memdel((void**)&(mlx_all->map->map));
-	mlx_all->map->map = new_map;
-	ft_print_tab(mlx_all);
-	//mlx_all->map->len = mlx_all->map->len;
-}*/
+}
+
+void	ft_z_rotation(t_mlx *mlx_all, double theta)
+{
+	int		i;
+	int		j;
+	double	tmp_x;
+	double	tmp_y;
+
+	i = -1;
+	while (mlx_all->map->height > ++i)
+	{
+		j = -1;
+		while (mlx_all->map->len > ++j)
+		{
+			tmp_x = mlx_all->map->map[i][j]->x;
+			tmp_y = mlx_all->map->map[i][j]->y;
+			mlx_all->map->map[i][j]->x = tmp_x * cos(theta)
+				+ tmp_y * sin(theta);
+			mlx_all->map->map[i][j]->y = tmp_x * (sin(theta) * -1)
+				+ tmp_y * cos(theta);
+		}
+	}
+}
