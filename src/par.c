@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/0mlx_all->cam->di_z6:54:57 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/21 19:02:32 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/21 19:10:58 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void		ft_parallel(t_mlx *mlx_all)
 
 void		ft_set_para(t_mlx *mlx_all, char para)
 {
-	if (mlx_all->cam->proj != 'p' || para == 'rt ')
+	if (mlx_all->cam->proj != 'p' || para == 'r')
 	{
 		mlx_all->cam->proj = 'p';
 		mlx_all->cam->di_x = mlx_all->win->width
