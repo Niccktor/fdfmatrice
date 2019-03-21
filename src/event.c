@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 18:31:01 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/21 19:02:34 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/21 22:49:18 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,29 +45,29 @@ int 		ft_key_hook(int key, void *para)
 	}
 	else if (key == 12) /* key == 'q' */
 	{
-		mlx_all->cam->angle /=1.2;
+		mlx_all->cam->angle /= 1.2;
 		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 14) /* key == 'e' */
 	{
-		mlx_all->cam->angle *=1.2;
+		mlx_all->cam->angle *= 1.2;
 		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 78) /* key == '-' pav num */
 	{
-		mlx_all->cam->di_x /=1.2;
-		mlx_all->cam->di_y /=1.2;
-		mlx_all->cam->di_z /=1.2;
+		mlx_all->cam->di_x /= 1.2;
+		mlx_all->cam->di_y /= 1.2;
+		mlx_all->cam->di_z /= 1.2;
 		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 69) /* key == '+' pav num */
 	{
-		mlx_all->cam->di_x *=1.2;
-		mlx_all->cam->di_y *=1.2;
-		mlx_all->cam->di_z *=1.2;
+		mlx_all->cam->di_x *= 1.2;
+		mlx_all->cam->di_y *= 1.2;
+		mlx_all->cam->di_z *= 1.2;
 		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
@@ -124,7 +124,6 @@ int 		ft_key_hook(int key, void *para)
 		ft_x_rotation(mlx_all, -0.1);
 		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
-	
 	}
 	else if (key == 91) /* key == '8' pav num */
 	{

@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:34:52 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/18 16:49:42 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/21 22:52:03 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int		ft_parse_map(char *file, t_mlx *mlx_all)
 {
 	char	*line;
 	int		fd;
-	int 	i;
+	int		i;
 
 	if ((mlx_all->map->height = ft_get_height(file)) == 0)
-			return (-1);
+		return (-1);
 	mlx_all->map->map = (t_point ***)ft_memalloc(sizeof(t_point **) *
 			(mlx_all->map->height + 1));
 	if ((fd = open(file, O_RDONLY)) < 0 || mlx_all->map->map == NULL)
@@ -66,9 +66,7 @@ int		ft_parse_map(char *file, t_mlx *mlx_all)
 int		ft_get_map(t_mlx *mlx_all, char **line, int k)
 {
 	int		i;
-//	int		j;
 	int		len;
-//	char	*rgb;
 
 	len = 0;
 	while (line[len] != '\0')
@@ -84,17 +82,6 @@ int		ft_get_map(t_mlx *mlx_all, char **line, int k)
 	while (line[i] != '\0')
 	{
 		mlx_all->map->map[k][i] = ft_newpoint(i, k, line[i]);
-	/*	j = 0;
-		while (line[i][j] != ',' && line[i][j] != '\0')
-			j++;
-		if (line[i][j] == ',')
-		{
-			rgb = ft_strsub(line[i], j + 3, 8);
-			mlx_all->map->color[k][i] = ft_atoi_base(rgb, 16);
-			ft_memdel((void **)&rgb);
-		}
-		else
-			mlx_all->map->color[k][i] = ft_atoi_base("FF0000", 16);*/
 		ft_memdel((void **)&(line[i]));
 		i++;
 	}
@@ -119,9 +106,9 @@ int		ft_check_line(char *line)
 			{
 				if ((j == 1 && line[i + j] == '0')
 						|| (j == 2 && line[i + j] == 'x')
-						|| (j > 2 && j < 9 && ft_ishexa(line[i + j ]) == 1))
+						|| (j > 2 && j < 9 && ft_ishexa(line[i + j]) == 1))
 					j++;
-				else  
+				else
 					return (-1);
 			}
 		}
