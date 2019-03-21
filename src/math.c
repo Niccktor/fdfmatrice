@@ -6,19 +6,18 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 16:51:56 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/20 17:49:00 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/21 22:43:39 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
- *	sin(x) = x - x^3/3! + x^5/5! - x^7/7! + x^9/9!
- *	(fact + fact) * step * (step + step + 1);
- *	(1 + 1) * 1 *(1 + 1 + 1); step = 1 fact = 6
- *	(6 + 6) * 2 * (2 + 2 + 1); step = 2 fact = 120
- *	
- */
+**	sin(x) = x - x^3/3! + x^5/5! - x^7/7! + x^9/9!
+**	(fact + fact) * step * (step + step + 1);
+**	(1 + 1) * 1 *(1 + 1 + 1); step = 1 fact = 6
+** (6 + 6) * 2 * (2 + 2 + 1); step = 2 fact = 12
+*/
 
-static double ft_taylor_sin(double x)
+static double	ft_taylor_sin(double x)
 {
 	int		step;
 	double	fact;
@@ -39,14 +38,14 @@ static double ft_taylor_sin(double x)
 	return (ret);
 }
 
-double		ft_sin(double x)
+double			ft_sin(double x)
 {
 	int		sign;
 	double	pi;
 
 	pi = 3.14159265359;
 	sign = 1;
-	if (x <	0)
+	if (x < 0)
 	{
 		x = -x;
 		sign = -1;
@@ -60,13 +59,13 @@ double		ft_sin(double x)
 	return (ft_taylor_sin(x) * sign);
 }
 
-static double ft_taylor_cos(double x)
+static double	ft_taylor_cos(double x)
 {
-	int step;
-	double fact;
-	double square_x;
-	double ret;
-	
+	int		step;
+	double	fact;
+	double	square_x;
+	double	ret;
+
 	square_x = x * x;
 	x = 1;
 	step = 1;
@@ -82,10 +81,10 @@ static double ft_taylor_cos(double x)
 	return (ret);
 }
 
-double		ft_cos(double x)
+double			ft_cos(double x)
 {
-	int sign;
-	double pi;
+	int		sign;
+	double	pi;
 
 	pi = 3.14159265359;
 	sign = 1;
@@ -103,7 +102,7 @@ double		ft_cos(double x)
 	return (ft_taylor_cos(x) * sign);
 }
 
-double		ft_tan(double x)
+double			ft_tan(double x)
 {
 	return (ft_sin(x) / ft_cos(x));
 }
