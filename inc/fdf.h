@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:09:03 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/20 17:47:06 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/21 18:54:04 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ unsigned int	ft_get_color(char *rgb);
  * 					iso.c
  */
 void			ft_iso(t_mlx *mlx_all);
+void			ft_set_iso(t_mlx *mlx_all, char para);
 /*
  *					retation.c
  */
@@ -124,8 +125,8 @@ void			ft_z_rotation(t_mlx *mlx_all, double theta);
 /*
  * 					par.c
  */
-//void			ft_parallel(t_mlx *mlx_all);
-
+void			ft_parallel(t_mlx *mlx_all);
+void			ft_set_para(t_mlx *mlx_all, char para);
 
 double			ft_sin(double x);
 double			ft_cos(double x);
