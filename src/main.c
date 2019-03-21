@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:06:50 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/02/21 19:38:46 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/21 22:50:25 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,12 @@ int		main(int argc, char **argv)
 	mlx_key_hook(mlx_all->win->win_ptr, ft_key_hook, (void *)mlx_all);
 	mlx_mouse_hook(mlx_all->win->win_ptr, ft_mouse_hook, (void *)mlx_all);
 	mlx_loop(mlx_all->mlx_ptr);
+	return (0);
+}
+
+int		ft_close(t_mlx *mlx_all)
+{
+	mlx_destroy_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
+	exit(0);
 	return (0);
 }

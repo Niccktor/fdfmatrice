@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:09:03 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/21 18:54:04 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/21 22:20:58 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,12 @@ typedef struct		s_mlx
 	t_map			*map;
 	t_cam			*cam;
 }					t_mlx;
+
+/*
+ *					main.c
+ */
+
+int		ft_close(t_mlx *mlx_all);
 
 /*
  *					event.c

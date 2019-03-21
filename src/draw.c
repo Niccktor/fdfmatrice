@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 18:45:12 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/01 16:31:26 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/21 22:50:04 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_bres		*ft_new_bres(int x1, int y1, int x2, int y2)
 {
 	t_bres	*new;
 
-	new = (t_bres *)ft_memalloc(sizeof(t_bres));
+	if ((new = (t_bres *)ft_memalloc(sizeof(t_bres))) == NULL)
+		ft_close(NULL);
 	new->x1 = x1;
 	new->y1 = y1;
 	new->x2 = x2;
@@ -37,7 +38,9 @@ void		ft_draw_ligne(t_mlx *mlx_all, int x, int y, int color)
 {
 	t_bres *bres;
 
-	bres = ft_new_bres(mlx_all->win->x_ligne, mlx_all->win->y_ligne, x, y);
+	if ((bres = ft_new_bres(mlx_all->win->x_ligne, mlx_all->win->y_ligne, x, y))
+			== NULL)
+		ft_close(mlx_all);
 	while ((bres->i <= bres->dx && bres->dx >= bres->dy)
 			|| (bres->i <= bres->dy && bres->dx <= bres->dy))
 	{
