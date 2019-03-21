@@ -6,13 +6,13 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 19:30:51 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/21 19:10:32 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/21 22:29:13 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-t_mlx	*ft_new_mlx()
+t_mlx		*ft_new_mlx(void)
 {
 	t_mlx	*new;
 
@@ -33,10 +33,10 @@ t_mlx	*ft_new_mlx()
 	return (new);
 }
 
-t_mlx	*ft_new_win(t_mlx *mlx_all, char *s, int width, int height)
+t_mlx		*ft_new_win(t_mlx *mlx_all, char *s, int width, int height)
 {
 	if ((mlx_all->win = (t_win *)ft_memalloc(sizeof(t_win))) == NULL)
-	{	
+	{
 		ft_memdel((void **)&(mlx_all->mlx_ptr));
 		ft_memdel((void **)&(mlx_all->map));
 		ft_memdel((void **)&mlx_all);
@@ -50,11 +50,10 @@ t_mlx	*ft_new_win(t_mlx *mlx_all, char *s, int width, int height)
 	mlx_all->win->ligne = 0;
 	mlx_all->win->x_ligne = 0;
 	mlx_all->win->y_ligne = 0;
-
 	return (mlx_all);
 }
 
-t_mlx	*ft_new_cam(t_mlx *mlx_all)
+t_mlx		*ft_new_cam(t_mlx *mlx_all)
 {
 	if ((mlx_all->cam = (t_cam *)ft_memalloc(sizeof(t_cam))) == NULL)
 	{
@@ -69,7 +68,7 @@ t_mlx	*ft_new_cam(t_mlx *mlx_all)
 	return (mlx_all);
 }
 
-int		ft_ishexa(char c)
+int			ft_ishexa(char c)
 {
 	if (ft_isdigit(c) == 1
 			|| ((c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F')))
@@ -93,7 +92,7 @@ t_point		*ft_newpoint(int x, int y, char *line)
 		j++;
 	if (line[j] == ',')
 	{
-		rgb = ft_strsub(line, j+3, 8);
+		rgb = ft_strsub(line, j + 3, 8);
 		new->color = ft_atoi_base(rgb, 16);
 		ft_memdel((void **)&rgb);
 	}
