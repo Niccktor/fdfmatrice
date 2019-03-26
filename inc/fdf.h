@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:09:03 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/26 14:11:39 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/26 22:07:44 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct		s_win
 	char			*name;
 	int 			width;
 	int 			height;
+	void			*img_ptr;
+	unsigned int	*img_str;
 	int				ligne;
 	int				x_ligne;
 	int				y_ligne;

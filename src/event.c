@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 18:31:01 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/26 14:16:00 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/26 22:51:56 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@
 
 void		ft_render(t_mlx *mlx_all)
 {
+	ft_bzero((void *)mlx_all->win->img_str, mlx_all->win->width
+			* mlx_all->win->height * 4);
 	if (mlx_all->cam->proj == 'i')
 		ft_iso(mlx_all);
 	else if (mlx_all->cam->proj == 'p')
 		ft_parallel(mlx_all);
+	mlx_put_image_to_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr,
+			mlx_all->win->img_ptr, 0, 0);
 }
 
 int 		ft_key_hook(int key, void *para)
@@ -40,19 +44,16 @@ int 		ft_key_hook(int key, void *para)
 			ft_set_iso(mlx_all, 'r');
 		else
 			ft_set_para(mlx_all, 'r');
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 12) /* key == 'q' */
 	{
 		mlx_all->cam->angle /= 1.2;
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 14) /* key == 'e' */
 	{
 		mlx_all->cam->angle *= 1.2;
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 78) /* key == '-' pav num */
@@ -60,7 +61,6 @@ int 		ft_key_hook(int key, void *para)
 		mlx_all->cam->di_x /= 1.2;
 		mlx_all->cam->di_y /= 1.2;
 		mlx_all->cam->di_z /= 1.2;
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 69) /* key == '+' pav num */
@@ -68,92 +68,77 @@ int 		ft_key_hook(int key, void *para)
 		mlx_all->cam->di_x *= 1.2;
 		mlx_all->cam->di_y *= 1.2;
 		mlx_all->cam->di_z *= 1.2;
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 34) /* key == 'i' */
 	{
 		ft_set_iso(mlx_all, 'i');
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 126) /* key == 'arrow up' */
 	{
 		mlx_all->cam->up_down -= 10;
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 125) /* key == 'arrow down' */
 	{
 		mlx_all->cam->up_down += 10;
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 123) /* key == 'arrow left' */
 	{
 		mlx_all->cam->left_right -= 10;
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 124) /* key == 'arrow right' */
 	{
 		mlx_all->cam->left_right += 10;
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 116) /* key == 'page up' */
 	{
 		mlx_all->cam->di_z += 1;
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 121) /* key == 'page down' */
 	{
 		mlx_all->cam->di_z -= 1;
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 86) /* key == '4' pav num */
 	{
 		ft_x_rotation(mlx_all, 0.1);
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 88) /* key == '6' pav num */
 	{
 		ft_x_rotation(mlx_all, -0.1);
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 91) /* key == '8' pav num */
 	{
 		ft_y_rotation(mlx_all, 0.1);
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 84) /* key == '2' pav num */
 	{
 		ft_y_rotation(mlx_all, -0.1);
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 89) /* key == '7' pav num */
 	{
 		ft_z_rotation(mlx_all, 0.1);
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 85) /* key == '3' pav num */
 	{
 		ft_z_rotation(mlx_all, -0.1);
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	else if (key == 35) /* key ==  'p'*/
 	{
 		if (mlx_all->cam->proj != 'p')
 			ft_set_para(mlx_all, 'p');
-		mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 		ft_render(mlx_all);
 	}
 	ft_putstr("----------------------key----------------------\n");

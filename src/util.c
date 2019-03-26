@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 19:30:51 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/21 23:51:07 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/26 22:29:15 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ t_mlx		*ft_new_mlx(void)
 
 t_mlx		*ft_new_win(t_mlx *mlx_all, char *s, int width, int height)
 {
+	int bpp;
+	int	s_l;
+	int	endian;
+
 	if ((mlx_all->win = (t_win *)ft_memalloc(sizeof(t_win))) == NULL)
 	{
 		ft_memdel((void **)&(mlx_all->mlx_ptr));
@@ -47,6 +51,18 @@ t_mlx		*ft_new_win(t_mlx *mlx_all, char *s, int width, int height)
 	mlx_all->win->height = height;
 	mlx_all->win->win_ptr = mlx_new_window(mlx_all->mlx_ptr,
 			mlx_all->win->width, mlx_all->win->height, mlx_all->win->name);
+
+	mlx_all->win->img_ptr = mlx_new_image(mlx_all->mlx_ptr, width, height);
+	mlx_all->win->img_str = (unsigned int *)mlx_get_data_addr(mlx_all->win->img_ptr,
+			&bpp, &s_l, &endian);
+
+	ft_putstr("bpp : ");
+	ft_putnbr(bpp);
+	ft_putstr(" s_l : ");
+	ft_putnbr(s_l);
+	ft_putstr(" endian : ");
+	ft_putnbr(endian);
+	ft_putstr("\n");
 	mlx_all->win->ligne = 0;
 	mlx_all->win->x_ligne = 0;
 	mlx_all->win->y_ligne = 0;
