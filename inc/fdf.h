@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:09:03 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/26 22:07:44 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/26 23:45:28 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 
 # include "../libft/libft.h"
 # include <mlx.h>
+# include <stdio.h>
 
 typedef struct		s_point
 {
 	double 			x;
 	double			y;
 	double			z;
-	int				color;
+	unsigned int	color;
 }					t_point;
 
 typedef struct		s_map
@@ -68,6 +69,7 @@ typedef struct		s_cam
 	double			di_y;
 	double			di_z;
 	char			proj;
+	unsigned int	opacity;
 	double			angle;
 }					t_cam;
 

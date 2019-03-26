@@ -6,11 +6,12 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 18:31:01 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/26 22:51:56 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/27 00:04:26 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
 
 #define BLUE 0x0A5FE8
 #define WHITE 0xFFFFFF
@@ -23,6 +24,7 @@ void		ft_render(t_mlx *mlx_all)
 		ft_iso(mlx_all);
 	else if (mlx_all->cam->proj == 'p')
 		ft_parallel(mlx_all);
+	mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 	mlx_put_image_to_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr,
 			mlx_all->win->img_ptr, 0, 0);
 }
@@ -141,6 +143,18 @@ int 		ft_key_hook(int key, void *para)
 			ft_set_para(mlx_all, 'p');
 		ft_render(mlx_all);
 	}
+	else if (key == 43 && mlx_all->cam->opacity < 4026531840)
+	{
+		mlx_all->cam->opacity += 0x10000000;
+		ft_render(mlx_all);
+	}
+	else if (key == 47 && mlx_all->cam->opacity > 0)
+	{
+		mlx_all->cam->opacity -= 0x10000000;
+		ft_render(mlx_all);
+	}
+	if (key == 47 || key == 43)
+		printf("opacity = %u\n", mlx_all->cam->opacity);
 	ft_putstr("----------------------key----------------------\n");
 	ft_putnbr(key);
 	ft_putstr("\n");

@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 19:30:51 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/26 22:29:15 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/27 00:01:02 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ t_mlx		*ft_new_win(t_mlx *mlx_all, char *s, int width, int height)
 			mlx_all->win->width, mlx_all->win->height, mlx_all->win->name);
 
 	mlx_all->win->img_ptr = mlx_new_image(mlx_all->mlx_ptr, width, height);
-	mlx_all->win->img_str = (unsigned int *)mlx_get_data_addr(mlx_all->win->img_ptr,
-			&bpp, &s_l, &endian);
+	mlx_all->win->img_str = (unsigned int *)mlx_get_data_addr(mlx_all->win->img_ptr
+			, &bpp, &s_l, &endian);
 
 	ft_putstr("bpp : ");
 	ft_putnbr(bpp);
@@ -79,6 +79,7 @@ t_mlx		*ft_new_cam(t_mlx *mlx_all)
 		ft_memdel((void **)&mlx_all);
 		return (NULL);
 	}
+	mlx_all->cam->opacity = 0;
 	mlx_all->cam->proj = 'i';
 	ft_set_iso(mlx_all, 'n');
 	return (mlx_all);
