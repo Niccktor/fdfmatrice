@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 21:54:51 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/21 18:51:46 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/26 16:44:12 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ static void		ft_iso_right(t_mlx *mlx_all, int i, int j)
 	int x_add;
 	int y_add;
 
-	x_add = (mlx_all->win->width / 2 - mlx_all->map->len / 2) + mlx_all->cam->left_right;
-	y_add = (mlx_all->win->height / 2 - mlx_all->map->height / 2) + mlx_all->cam->up_down;
+	x_add = mlx_all->cam->left_right;
+	y_add = mlx_all->cam->up_down;
+
 	mlx_all->win->x_ligne = (mlx_all->map->map[i][j]->x * mlx_all->cam->di_x
 		- mlx_all->map->map[i][j]->y * mlx_all->cam->di_y)
 		* cos(mlx_all->cam->angle) + x_add;
@@ -64,8 +65,8 @@ static void		ft_iso_down(t_mlx *mlx_all, int i, int j)
 	int y_add;
 
 	i++;
-	x_add = (mlx_all->win->width / 2 - mlx_all->map->len / 2) + mlx_all->cam->left_right;
-	y_add = (mlx_all->win->height / 2 - mlx_all->map->height / 2) + mlx_all->cam->up_down;
+	x_add = mlx_all->cam->left_right;
+	y_add = mlx_all->cam->up_down;
 	x = (mlx_all->map->map[i][j]->x * mlx_all->cam->di_x
 		- mlx_all->map->map[i][j]->y * mlx_all->cam->di_y)
 		* cos(mlx_all->cam->angle) + x_add;
@@ -84,7 +85,7 @@ void			ft_iso(t_mlx *mlx_all)
 	i = 0;
 	ft_putstr("\ndi_x = ");
 	ft_putnbr(mlx_all->cam->di_x);
-	ft_putstr(" di_ y = ");
+	ft_putstr(" di_y = ");
 	ft_putnbr(mlx_all->cam->di_y);
 	ft_putstr(" di_z = ");
 	ft_putnbr(mlx_all->cam->di_z);
@@ -108,11 +109,13 @@ void		ft_set_iso(t_mlx *mlx_all, char para)
 	if (mlx_all->cam->proj != 'i' || para == 'r')
 	{
 		mlx_all->cam->proj = 'i';
-		mlx_all->cam->di_x = 9;
-		mlx_all->cam->di_y = 16;
-		mlx_all->cam->di_z = 1;
-		mlx_all->cam->up_down = 0;
-		mlx_all->cam->left_right = 0;
+		mlx_all->cam->di_x = (mlx_all->win->height / mlx_all->map->height) / 2;
+		mlx_all->cam->di_y = (mlx_all->win->width / mlx_all->map->len) / 2;
+		mlx_all->cam->di_z = (mlx_all->win->width / mlx_all->map->len) / 5;
+		mlx_all->cam->up_down = (mlx_all->map->height * mlx_all->cam->di_y
+				+ mlx_all->map->len * mlx_all->cam->di_x) / 4;
+		mlx_all->cam->left_right = 	((mlx_all->map->height / 2 - mlx_all->map->len / 2)
+			* mlx_all->cam->di_y) + mlx_all->win->width / 2;;
 		mlx_all->cam->angle = 0.523599;
 	}
 }
