@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 19:30:51 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/21 22:29:13 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/21 23:51:07 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ t_mlx		*ft_new_cam(t_mlx *mlx_all)
 		ft_memdel((void **)&mlx_all);
 		return (NULL);
 	}
-	mlx_all->cam->proj = 'n';
-	ft_set_iso(mlx_all, 'r');
+	mlx_all->cam->proj = 'i';
+	ft_set_iso(mlx_all, 'n');
 	return (mlx_all);
 }
 
