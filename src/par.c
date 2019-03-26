@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 22:46:33 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/21 22:47:45 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/26 17:02:54 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,15 @@ void		ft_set_para(t_mlx *mlx_all, char para)
 	if (mlx_all->cam->proj != 'p' || para == 'r')
 	{
 		mlx_all->cam->proj = 'p';
-		mlx_all->cam->di_x = 10;
-		mlx_all->cam->di_y = 10;
-		mlx_all->cam->di_z = 1;
-		mlx_all->cam->left_right = 960;
-		mlx_all->cam->up_down = 540;
+		mlx_all->cam->di_x = mlx_all->win->width
+			/ (mlx_all->map->len + mlx_all->map->height) / 2;
+		mlx_all->cam->di_y = mlx_all->cam->di_x;
+		mlx_all->cam->di_z = mlx_all->win->width
+			/ (mlx_all->map->len + mlx_all->map->height) / 5;
+		mlx_all->cam->up_down = (mlx_all->win->height
+				- mlx_all->map->height * mlx_all->cam->di_y) / 2;
+		mlx_all->cam->left_right = (mlx_all->win->width
+				+ mlx_all->win->height) / 3;
 		mlx_all->cam->angle = 0;
 	}
 }
