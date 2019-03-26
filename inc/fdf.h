@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:09:03 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/21 22:20:58 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/26 14:11:39 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int		ft_close(t_mlx *mlx_all);
  */
 int		ft_key_hook(int key, void *para);
 int		ft_mouse_hook(int button, int x, int y, void *para);
+void	ft_render(t_mlx *mlx_all);
 
 
 /*

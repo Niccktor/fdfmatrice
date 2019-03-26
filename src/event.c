@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 18:31:01 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/21 22:49:18 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/26 14:16:00 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define BLUE 0x0A5FE8
 #define WHITE 0xFFFFFF
 
-static void		ft_render(t_mlx *mlx_all)
+void		ft_render(t_mlx *mlx_all)
 {
 	if (mlx_all->cam->proj == 'i')
 		ft_iso(mlx_all);
