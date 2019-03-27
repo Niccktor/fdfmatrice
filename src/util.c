@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 19:30:51 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/27 00:01:02 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/27 19:23:46 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,10 @@ t_mlx		*ft_new_win(t_mlx *mlx_all, char *s, int width, int height)
 	mlx_all->win->height = height;
 	mlx_all->win->win_ptr = mlx_new_window(mlx_all->mlx_ptr,
 			mlx_all->win->width, mlx_all->win->height, mlx_all->win->name);
-
 	mlx_all->win->img_ptr = mlx_new_image(mlx_all->mlx_ptr, width, height);
-	mlx_all->win->img_str = (unsigned int *)mlx_get_data_addr(mlx_all->win->img_ptr
-			, &bpp, &s_l, &endian);
-
-	ft_putstr("bpp : ");
-	ft_putnbr(bpp);
-	ft_putstr(" s_l : ");
-	ft_putnbr(s_l);
-	ft_putstr(" endian : ");
-	ft_putnbr(endian);
-	ft_putstr("\n");
+	mlx_all->win->img_str =
+		(unsigned int *)mlx_get_data_addr(mlx_all->win->img_ptr,
+				&bpp, &s_l, &endian);
 	mlx_all->win->ligne = 0;
 	mlx_all->win->x_ligne = 0;
 	mlx_all->win->y_ligne = 0;
