@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:06:50 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/26 14:11:41 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/27 19:02:05 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int		main(int argc, char **argv)
 
 int		ft_close(t_mlx *mlx_all)
 {
-	mlx_destroy_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
+	if (mlx_all != NULL)
+		mlx_destroy_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 	exit(0);
 	return (0);
 }
