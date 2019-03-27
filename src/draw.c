@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 18:45:12 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/27 19:09:05 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/27 19:57:24 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,26 @@ void		ft_draw_ligne(t_mlx *mlx_all, int x, int y, int color)
 	ft_memdel((void **)&bres);
 }
 
+static void	ft_legend(t_mlx *mlx_all)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (y < mlx_all->win->height) /*Crea marge*/ 
+	{
+		x = 0;
+		while (x < 200)
+		{
+			ft_fill_pixel(mlx_all, x, y, 0x6F00FF);
+			x++;
+		}
+		y++;
+	}
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 0, 0xFFFFFF
+			, "/******************/"); /*Texte (200 pixel marge = 20 chars)*/
+}
+
 void		ft_render(t_mlx *mlx_all)
 {
 	ft_bzero((void *)mlx_all->win->img_str, mlx_all->win->width
@@ -78,7 +98,9 @@ void		ft_render(t_mlx *mlx_all)
 		ft_iso(mlx_all);
 	else if (mlx_all->cam->proj == 'p')
 		ft_parallel(mlx_all);
+	ft_legend(mlx_all);
 	mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
 	mlx_put_image_to_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr,
 			mlx_all->win->img_ptr, 0, 0);
+	ft_legend(mlx_all);
 }
