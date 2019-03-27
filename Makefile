@@ -6,7 +6,7 @@
 #    By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/14 15:49:27 by tbeguin           #+#    #+#              #
-#    Updated: 2019/03/20 17:21:02 by tbeguin          ###   ########.fr        #
+#    Updated: 2019/03/27 18:29:44 by tbeguin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ SRC = main.c		\
 	  util.c		\
 	  draw.c		\
 	  read.c		\
-	  color.c		\
 	  iso.c			\
 	  rotation.c	\
 	  par.c			\
