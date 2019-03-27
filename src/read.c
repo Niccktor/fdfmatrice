@@ -6,36 +6,12 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:34:52 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/21 22:52:03 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/27 19:13:00 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 #include <fcntl.h>
-
-void	ft_print_tab(t_mlx *mlx_all)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < mlx_all->map->height)
-	{
-		j = 0;
-		while (j < mlx_all->map->len)
-		{
-			ft_putnbr(mlx_all->map->map[i][j]->y);
-			ft_putstr(",");
-			ft_putnbr(mlx_all->map->map[i][j]->x);
-			ft_putstr(",");
-			ft_putnbr(mlx_all->map->map[i][j]->z);
-			ft_putstr(" ");
-			j++;
-		}
-		ft_putstr("\n");
-		i++;
-	}
-}
 
 int		ft_parse_map(char *file, t_mlx *mlx_all)
 {
@@ -58,8 +34,6 @@ int		ft_parse_map(char *file, t_mlx *mlx_all)
 		ft_memdel((void **)&line);
 		i++;
 	}
-	ft_print_tab(mlx_all);
-	ft_putstr("\n");
 	return (0);
 }
 
