@@ -6,19 +6,27 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 18:45:12 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/26 23:55:59 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/27 18:57:45 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 #include <math.h>
 
+static void	ft_fill_pixel(t_mlx *mlx_all, int x, int y, unsigned int color)
+{
+	if (x >= 0 && x < mlx_all->win->width
+			&& y >= 0 && y < mlx_all->win->height)
+		mlx_all->win->img_str[y * mlx_all->win->width + x] =
+			color + mlx_all->cam->opacity;
+}
+
 t_bres		*ft_new_bres(int x1, int y1, int x2, int y2)
 {
 	t_bres	*new;
 
 	if ((new = (t_bres *)ft_memalloc(sizeof(t_bres))) == NULL)
-		ft_close(NULL);
+		ft_close(mxl_all);
 	new->x1 = x1;
 	new->y1 = y1;
 	new->x2 = x2;
@@ -34,21 +42,11 @@ t_bres		*ft_new_bres(int x1, int y1, int x2, int y2)
 	return (new);
 }
 
-static void	ft_fill_pixel(t_mlx *mlx_all, int x, int y, unsigned int color)
-{
-	if (x >= 0 && x <= mlx_all->win->width
-			&& y >= 0 && y <= mlx_all->win->height)
-		mlx_all->win->img_str[y * mlx_all->win->width + x]
-			= color + mlx_all->cam->opacity;
-}
-
 void		ft_draw_ligne(t_mlx *mlx_all, int x, int y, int color)
 {
 	t_bres *bres;
 
-	if ((bres = ft_new_bres(mlx_all->win->x_ligne, mlx_all->win->y_ligne, x, y))
-			== NULL)
-		ft_close(mlx_all);
+	bres = ft_new_bres(mlx_all->win->x_ligne, mlx_all->win->y_ligne, x, y);
 	while ((bres->i <= bres->dx && bres->dx >= bres->dy)
 			|| (bres->i <= bres->dy && bres->dx <= bres->dy))
 	{
@@ -70,4 +68,17 @@ void		ft_draw_ligne(t_mlx *mlx_all, int x, int y, int color)
 		ft_fill_pixel(mlx_all, bres->x1, bres->y1, color);
 	}
 	ft_memdel((void **)&bres);
+}
+
+void		ft_render(t_mlx *mlx_all)
+{
+	ft_bzero((void *)mlx_all->win->img_str, mlx_all->win->width
+			* mlx_all->win->height * 4);
+	if (mlx_all->cam->proj == 'i')
+		ft_iso(mlx_all);
+	else if (mlx_all->cam->proj == 'p')
+		ft_parallel(mlx_all);
+	mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
+	mlx_put_image_to_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr,
+			mlx_all->win->img_ptr, 0, 0);
 }

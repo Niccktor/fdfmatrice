@@ -6,7 +6,7 @@
 #    By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/14 15:49:27 by tbeguin           #+#    #+#              #
-#    Updated: 2019/03/27 18:29:44 by tbeguin          ###   ########.fr        #
+#    Updated: 2019/03/27 18:42:42 by tbeguin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRC = main.c		\
 	  iso.c			\
 	  rotation.c	\
 	  par.c			\
-	  math.c
+	  math.c		\
+	  mouse.c
 
 
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))

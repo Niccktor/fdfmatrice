@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 18:31:01 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/27 18:28:02 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/27 18:55:31 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,10 @@
 #define BLUE 0x0A5FE8
 #define WHITE 0xFFFFFF
 
-void		ft_render(t_mlx *mlx_all)
-{
-	ft_bzero((void *)mlx_all->win->img_str, mlx_all->win->width
-			* mlx_all->win->height * 4);
-	if (mlx_all->cam->proj == 'i')
-		ft_iso(mlx_all);
-	else if (mlx_all->cam->proj == 'p')
-		ft_parallel(mlx_all);
-	mlx_clear_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr);
-	mlx_put_image_to_window(mlx_all->mlx_ptr, mlx_all->win->win_ptr,
-			mlx_all->win->img_ptr, 0, 0);
-}
-
 static void	ft_proj_event(int key, t_mlx *mlx_all)
 {
 	if (key == 34)
 		ft_set_iso(mlx_all, 'i');
-
 	else if (key == 15)
 	{
 		if (mlx_all->cam->proj == 'i')
@@ -79,7 +65,7 @@ static void	ft_mouv_event(int key, t_mlx *mlx_all)
 	ft_render(mlx_all);
 }
 
-static void ft_rot_event(int key, t_mlx *mlx_all)
+static void	ft_rot_event(int key, t_mlx *mlx_all)
 {
 	if (key == 12)
 		mlx_all->cam->angle /= 1.2;
@@ -111,7 +97,7 @@ static void	ft_color_event(int key, t_mlx *mlx_all)
 	ft_render(mlx_all);
 }
 
-int 		ft_key_hook(int key, void *para)
+int			ft_key_hook(int key, void *para)
 {
 	t_mlx *mlx_all;
 
@@ -125,38 +111,12 @@ int 		ft_key_hook(int key, void *para)
 	else if (key == 15 || key == 34 || key == 35)
 		ft_proj_event(key, mlx_all);
 	else if (key == 78 || key == 69 || key == 116 || key == 121
-			|| key == 123 || key == 124|| key == 125 || key == 126)
+			|| key == 123 || key == 124 || key == 125 || key == 126)
 		ft_mouv_event(key, mlx_all);
 	else if (key == 43 || key == 47)
 		ft_color_event(key, mlx_all);
 	else if (key == 12 || key == 14 || key == 84 || key == 85
 			|| key == 86 || key == 88 || key == 89 || key == 91)
 		ft_rot_event(key, mlx_all);
-	return (0);
-}
-
-int		ft_mouse_hook(int button, int x, int y, void *para)
-{
-	t_mlx		*mlx_all;
-
-	mlx_all = (t_mlx *)para;
-	if (button == 1)
-	{
-		if (mlx_all->win->ligne == 1)
-			ft_draw_ligne(mlx_all, x, y, BLUE);
-		else
-			mlx_pixel_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, x, y, WHITE);
-	}
-	if (button == 2)
-	{
-		if (mlx_all->win->ligne == 1)
-			mlx_all->win->ligne = 0;
-		else
-		{
-			mlx_all->win->ligne = 1;
-			mlx_all->win->x_ligne = x;
-			mlx_all->win->y_ligne = y;
-		}
-	}
 	return (0);
 }
