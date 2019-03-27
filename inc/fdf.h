@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:09:03 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/27 18:30:00 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/27 19:12:49 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ typedef struct		s_mlx
  *					main.c
  */
 
-int		ft_close(t_mlx *mlx_all);
+int		ft_close(t_mlx *mlx_all, char *e);
 
 /*
  *					event.c
