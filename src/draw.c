@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 18:45:12 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/27 19:02:36 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/27 19:09:05 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_bres		*ft_new_bres(int x1, int y1, int x2, int y2)
 	t_bres	*new;
 
 	if ((new = (t_bres *)ft_memalloc(sizeof(t_bres))) == NULL)
-		ft_close(NULL);
+		ft_close(NULL, "Error : Malloc bres\n");
 	new->x1 = x1;
 	new->y1 = y1;
 	new->x2 = x2;
