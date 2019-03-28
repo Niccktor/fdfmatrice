@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 18:31:01 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/27 18:55:31 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/28 15:50:50 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,7 @@ static void	ft_mouv_event(int key, t_mlx *mlx_all)
 
 static void	ft_rot_event(int key, t_mlx *mlx_all)
 {
-	if (key == 12)
-		mlx_all->cam->angle /= 1.2;
-	else if (key == 86)
+	if (key == 86)
 		ft_x_rotation(mlx_all, 0.1);
 	else if (key == 88)
 		ft_x_rotation(mlx_all, -0.1);
@@ -81,10 +79,6 @@ static void	ft_rot_event(int key, t_mlx *mlx_all)
 		ft_z_rotation(mlx_all, 0.1);
 	else if (key == 85)
 		ft_z_rotation(mlx_all, -0.1);
-	else if (key == 12)
-		mlx_all->cam->angle /= 1.2;
-	else if (key == 14)
-		mlx_all->cam->angle *= 1.2;
 	ft_render(mlx_all);
 }
 
@@ -115,8 +109,8 @@ int			ft_key_hook(int key, void *para)
 		ft_mouv_event(key, mlx_all);
 	else if (key == 43 || key == 47)
 		ft_color_event(key, mlx_all);
-	else if (key == 12 || key == 14 || key == 84 || key == 85
-			|| key == 86 || key == 88 || key == 89 || key == 91)
+	else if (key == 84 || key == 85 || key == 86
+			|| key == 88 || key == 89 || key == 91)
 		ft_rot_event(key, mlx_all);
 	return (0);
 }
