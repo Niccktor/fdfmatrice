@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 18:45:12 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/27 19:57:24 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/28 15:20:53 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	ft_legend(t_mlx *mlx_all)
 	int y;
 
 	y = 0;
-	while (y < mlx_all->win->height) /*Crea marge*/ 
+	while (y < mlx_all->win->height) 
 	{
 		x = 0;
 		while (x < 200)
@@ -86,8 +86,36 @@ static void	ft_legend(t_mlx *mlx_all)
 		}
 		y++;
 	}
-	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 0, 0xFFFFFF
-			, "/******************/"); /*Texte (200 pixel marge = 20 chars)*/
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 40, 0xffffff
+			, "/******************/");
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 100, 0xffffff
+			, "     ~ LEGEND ~     ");
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 160, 0xFFFFFF
+			, " Keyboard shortcuts ");
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 200, 0xFFFFFF
+			, " I : Isometric view ");
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 220, 0xFFFFFF
+			, " P : Parallel view  ");
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 240, 0xFFFFFF
+			, " R : Reset position ");
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 280, 0xFFFFFF
+			, " -/+ : Change zoom  ");
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 320, 0xffffff
+			, " </> : -/+ opacity  ");
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 360, 0xFFFFFF
+			, " page down/page up  ");
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 380, 0xFFFFFF
+			, " : -/+ perspective ");
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 420, 0xFFFFFF
+			, " Use arrows to move ");
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 460, 0xFFFFFF
+			, " Rotate the map     ");
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 480, 0xFFFFFF
+			, " with the pav num   ");
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 500, 0xFFFFFF
+			, " (4&6 - 2&8 - 3&7)  ");
+	mlx_string_put(mlx_all->mlx_ptr, mlx_all->win->win_ptr, 0, 560, 0xFFFFFF
+			, "/******************/");
 }
 
 void		ft_render(t_mlx *mlx_all)
