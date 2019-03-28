@@ -6,7 +6,7 @@
 /*   By: tbeguin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 18:31:01 by tbeguin           #+#    #+#             */
-/*   Updated: 2019/03/28 15:50:50 by tbeguin          ###   ########.fr       */
+/*   Updated: 2019/03/28 17:26:16 by tbeguin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,17 @@ static void	ft_mouv_event(int key, t_mlx *mlx_all)
 static void	ft_rot_event(int key, t_mlx *mlx_all)
 {
 	if (key == 86)
-		ft_x_rotation(mlx_all, 0.1);
+		ft_x_rotation(mlx_all, 1.5708);
 	else if (key == 88)
-		ft_x_rotation(mlx_all, -0.1);
+		ft_x_rotation(mlx_all, -1.5708);
 	else if (key == 91)
-		ft_y_rotation(mlx_all, 0.1);
+		ft_y_rotation(mlx_all, 1.5708);
 	else if (key == 84)
-		ft_y_rotation(mlx_all, -0.1);
+		ft_y_rotation(mlx_all, -1.5708);
 	else if (key == 89)
-		ft_z_rotation(mlx_all, 0.1);
+		ft_z_rotation(mlx_all, 1.5708);
 	else if (key == 85)
-		ft_z_rotation(mlx_all, -0.1);
+		ft_z_rotation(mlx_all, -1.5708);
 	ft_render(mlx_all);
 }
 
